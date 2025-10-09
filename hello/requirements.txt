@@ -1,0 +1,5 @@
+google-cloud-aiplatform[adk,agent_engines]
+google-auth
+python-dotenv
+pydantic
+cloudpickle
