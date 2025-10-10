@@ -5,10 +5,10 @@ import vertexai
 from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import AdkApp
 
-from agent import root_agent
+from .agent import root_agent
 
-def deploy_agent(agent_name: str, agent_obj) -> None:
-    """Deploy an agent to Vertex AI."""
+def deploy_agent(agent_obj) -> None:
+    """Deploy an agent to Vertex AI Agent Engine."""
     adk_app = AdkApp(agent=agent_obj, enable_tracing=True)
     
     remote_agent = agent_engines.create(
@@ -20,8 +20,10 @@ def deploy_agent(agent_name: str, agent_obj) -> None:
             "google-genai (>=1.5.0,<2.0.0)",
             "pydantic (>=2.10.6,<3.0.0)",
             "absl-py (>=2.2.1,<3.0.0)",
+            "google-auth (>=2.0.0)",
+            "python-dotenv (>=1.0.1)",
         ],
-        extra_packages=[f"./{agent_name}"],
+        extra_packages=[f"./{agent_obj.name}"],
     )
     
     print(f"✅ Deployed agent: {remote_agent.resource_name}")
@@ -31,7 +33,6 @@ def main(argv: list[str]) -> None:
     load_dotenv()
     
     # Get config from environment
-    agent_name = os.getenv("GOOGLE_ADK_AGENT_NAME", "root_agent")
     project_id = os.getenv("GOOGLE_CLOUD_PROJECT")
     location = os.getenv("GOOGLE_CLOUD_LOCATION")
     bucket = os.getenv("GOOGLE_CLOUD_STORAGE_BUCKET")
@@ -52,7 +53,7 @@ def main(argv: list[str]) -> None:
     )
     
     # Deploy the agent
-    deploy_agent(agent_name, root_agent)
+    deploy_agent(root_agent)
 
 if __name__ == "__main__":
     app.run(main)
