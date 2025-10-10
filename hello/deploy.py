@@ -17,6 +17,9 @@ def deploy_agent(agent_name: str, agent_obj) -> None:
         requirements=[
             "google-adk>=1.0.0",
             "google-cloud-aiplatform[agent-engines]>=1.96.0",
+            "google-genai (>=1.5.0,<2.0.0)",
+            "pydantic (>=2.10.6,<3.0.0)",
+            "absl-py (>=2.2.1,<3.0.0)",
         ],
         extra_packages=[f"./{agent_name}"],
     )
