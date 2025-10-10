@@ -16,11 +16,10 @@ google-adk = "^1.0.0"
 google-cloud-aiplatform = { extras = [
     "adk",
     "agent-engines",
-], version = "^1.96.0" }
+], version = "^1.93.0" }
 google-genai = "^1.9.0"
 python-dotenv = "^1.0.1"
 pydantic = "^2.10.6"
-cloudpickle = "^3.0.0"
 
 [tool.poetry.group.deployment]
 optional = true
