@@ -5,7 +5,7 @@ import vertexai
 from vertexai import agent_engines
 from vertexai.preview.reasoning_engines import AdkApp
 
-from .agent import root_agent
+from hello.agent import root_agent
 
 def deploy_agent(agent_obj) -> None:
     """Deploy an agent to Vertex AI Agent Engine."""
