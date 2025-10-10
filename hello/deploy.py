@@ -15,8 +15,8 @@ def deploy_agent(agent_name: str, agent_obj) -> None:
         adk_app,
         display_name=agent_obj.name,
         requirements=[
-            "google-adk>=1.16.0",
-            "google-cloud-aiplatform[agent-engines]>=1.110.0",
+            "google-adk>=1.0.0",
+            "google-cloud-aiplatform[agent-engines]>=1.96.0",
         ],
         extra_packages=[f"./{agent_name}"],
     )
