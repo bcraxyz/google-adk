@@ -11,13 +11,13 @@ keywords = ["google", "adk", "agents", "gemini"]
 packages = [{include = "hello"}]
 
 [tool.poetry.dependencies]
-python = "^3.12"
-google-adk = "^1.16.0"
+python = "^3.10"
+google-adk = "^1.0.0"
 google-cloud-aiplatform = { extras = [
     "adk",
     "agent-engines",
-], version = "^1.110.0" }
-python-dotenv = "^1.1.1"
+], version = "^1.96.0" }
+python-dotenv = "^1.0.1"
 
 [tool.poetry.group.deployment]
 optional = true
